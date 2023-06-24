@@ -9,6 +9,7 @@ import axios from 'axios';
 })
 export class LoginComponent {
   [x: string]: any;
+
   email: string | undefined;
   password: string | undefined;
 
@@ -23,15 +24,19 @@ export class LoginComponent {
     axios
       .post('http://localhost:8080/client/login', userData)
       .then((response) => {
-        if (!this.email && !this.password) {
-          alert('Preencha os campos corretamente');
-          console.log(response);
+        const tokenData = response.data; // Obtém a string completa do campo "data"
+        const tokenValue = tokenData.split('token: ')[1];
+
+        if (tokenValue) {
+          localStorage.setItem('token', tokenValue);
+          window.location.href = '/listagem';
+        } else {
+          console.error('Token não retornado pelo backend');
         }
       })
       .catch((error) => {
-        alert('Email e/ou senha inválidos');
+        alert('Preencha os campos corretamente');
         console.error('Login error:', error);
-        // Aqui você pode lidar com erros de registro e exibir mensagens de erro ao usuário
       });
   }
 }
