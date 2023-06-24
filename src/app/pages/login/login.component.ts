@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import axios from 'axios';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
   email: string | undefined;
   password: string | undefined;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toast: NgToastService) {}
 
   login() {
     const userData = {
@@ -26,16 +27,22 @@ export class LoginComponent {
       .then((response) => {
         const tokenData = response.data; // Obtém a string completa do campo "data"
         const tokenValue = tokenData.split('token: ')[1];
-
         if (tokenValue) {
           localStorage.setItem('token', tokenValue);
+          this.toast.success({
+            detail: 'Login sucess',
+            summary: 'successfully',
+            duration: 5000,
+          });
           window.location.href = '/listagem';
-        } else {
-          console.error('Token não retornado pelo backend');
         }
       })
       .catch((error) => {
-        alert('Preencha os campos corretamente');
+        this.toast.error({
+          detail: 'Password or Email incorrect',
+          summary: 'fill in correctly',
+          duration: 5000,
+        });
         console.error('Login error:', error);
       });
   }

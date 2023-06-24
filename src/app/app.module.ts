@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { ListagemComponent } from './pages/listagem/listagem.component';
+import { NgToastModule } from 'ng-angular-popup';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ListagemComponent } from './pages/listagem/listagem.component';
     ListagemComponent,
   ],
   imports: [
+    NgToastModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
