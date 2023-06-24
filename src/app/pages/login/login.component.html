@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Login</h1>
+      <div class="box">
+        <span class="p-float-label">
+          <input
+            [(ngModel)]="email"
+            name="email"
+            type="text"
+            pInputText
+            id="email"
+          />
+          <label htmlFor="email">Email</label>
+        </span>
+      </div>
+      <div class="box">
+        <span class="p-float-label">
+          <input
+            [(ngModel)]="password"
+            name="password"
+            type="password"
+            pInputText
+            id="password"
+          />
+          <label htmlFor="password">Password</label>
+        </span>
+      </div>
+      <div class="container-btn">
+        <button
+          (click)="login()"
+          pButton
+          class="button"
+          label="Sign in"
+        ></button>
+      </div>
+      <div class="register">
+        <p>Not a member? <a href="register">Register</a></p>
+      </div>
+    </div>
+  </div>
+</div>

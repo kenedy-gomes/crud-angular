@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Register</h1>
+      <form>
+        <div class="box">
+          <label for="name">Name Completo:</label>
+          <input
+            pInputText
+            type="text"
+            id="name"
+            [(ngModel)]="name"
+            name="name"
+            required
+          />
+        </div>
+        <div class="box">
+          <label for="Email">Email:</label>
+          <input
+            pInputText
+            type="text"
+            id="Email"
+            [(ngModel)]="email"
+            name="email"
+            required
+          />
+        </div>
+        <div class="box">
+          <label for="password">Password:</label>
+          <input
+            pInputText
+            id="password"
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+        </div>
+        <div class="box">
+          <label for="date">Birth date:</label>
+          <input
+            pInputText
+            id="date"
+            type="date"
+            [(ngModel)]="date"
+            name="date"
+            required
+          />
+        </div>
+
+        <div class="container-btn">
+          <button
+            (click)="register()"
+            pButton
+            class="button"
+            label="Register"
+          ></button>
+        </div>
+        <div class="link">
+          <p>Already a member? <a href="/">Login</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
