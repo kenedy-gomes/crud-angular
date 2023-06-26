@@ -10,7 +10,6 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class LoginComponent {
   [x: string]: any;
-
   email: string | undefined;
   password: string | undefined;
 

@@ -23,6 +23,7 @@
     "axios": "^1.4.0",
     "ng-angular-popup": "^0.4.4",
     "ngx-toastr": "^17.0.2",
+    "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",
     "primeng": "^16.0.2",
     "rxjs": "~7.8.0",
