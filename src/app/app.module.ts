@@ -14,6 +14,8 @@ import { ListagemComponent } from './pages/listagem/listagem.component';
 import { NgToastModule } from 'ng-angular-popup';
 import { OrderListModule } from 'primeng/orderlist';
 import { DataViewModule } from 'primeng/dataview';
+import { DialogModule } from 'primeng/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { DataViewModule } from 'primeng/dataview';
     ToastrModule,
     OrderListModule,
     DataViewModule,
+    DialogModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

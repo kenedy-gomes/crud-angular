@@ -95,3 +95,19 @@ span {
 p-orderlist {
   width: 90%;
 }
+
+.pi.pi-user-edit {
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.pi.pi-times {
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/*MODAL*/

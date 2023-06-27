@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import axios from 'axios';
 import { NgToastService } from 'ng-angular-popup';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-listagem',
@@ -14,12 +15,29 @@ export class ListagemComponent {
   price: string | undefined;
 
   productList: any[] = [];
+  router: any;
+  authService: any;
 
-  constructor(private http: HttpClient, private toast: NgToastService) {}
+  constructor(
+    private http: HttpClient,
+    private toast: NgToastService,
+    private primengConfig: PrimeNGConfig
+  ) {}
+
+  /*Modal*/
+  BasicShow: boolean = false;
+
+  showDialog() {
+    this.BasicShow = true;
+  }
+  /*Modal*/
+
   ngOnInit() {
     this.fetchProducts();
+    this.primengConfig.ripple = true;
   }
 
+  /*chamada para cadastrar produtos*/
   addProduct() {
     const productData = {
       name: this.name,
@@ -48,6 +66,8 @@ export class ListagemComponent {
       });
   }
 
+  /*chamada para listar os produtos*/
+
   fetchProducts() {
     const url = 'http://localhost:8080/product';
     axios
@@ -59,6 +79,8 @@ export class ListagemComponent {
         console.log('Ocorreu um erro ao obter os produtos:', error);
       });
   }
+
+  /*chamada para excluir os produtos*/
 
   /* onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
