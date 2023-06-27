@@ -67,7 +67,6 @@ export class ListagemComponent {
   }
 
   /*chamada para listar os produtos*/
-
   fetchProducts() {
     const url = 'http://localhost:8080/product';
     axios
