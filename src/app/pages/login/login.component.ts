@@ -24,7 +24,7 @@ export class LoginComponent {
     axios
       .post('http://localhost:8080/client/login', userData)
       .then((response) => {
-        const tokenData = response.data; // Obtém a string completa do campo "data"
+        const tokenData = response.data;
         const tokenValue = tokenData.split('token: ')[1];
         if (tokenValue) {
           localStorage.setItem('token', tokenValue);

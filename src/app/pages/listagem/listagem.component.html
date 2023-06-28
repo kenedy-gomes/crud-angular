@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
+    <!---------------- Register ---------------->
     <div class="Register">
+      <div class="container-return"></div>
       <div class="box">
         <h1>Register Products</h1>
         <span class="p-float-label">
@@ -49,36 +51,105 @@
         </div>
       </div>
     </div>
+    <!---------------- Register ---------------->
 
-    <div class="card flex justify-content-center">
-      <p-orderList
-        class="container-list"
-        [value]="productList"
-        [listStyle]="{ 'max-height': '40rem' }"
-        header="Listing Products"
-        filterBy="name"
-        filterPlaceholder="Filter by name"
-      >
-        <ng-template let-product pTemplate="item">
-          <div class="flex align-items-center p-2 w-full flex-wrap">
-            <div class="flex-1">
-              <h5 class="mb-2">{{ product.name }}</h5>
-              <i class="pi pi-tag vertical-align-middle mr-2"></i>
-              <span class="vertical-align-middle line-height-1">
-                Description:
-                {{ product.description }}</span
-              >
+    <!---------------- List ---------------->
+    <div class="container-list">
+      <div class="card">
+        <tr class="list" *ngIf="productList">
+          <h2>List Products</h2>
+          <div class="container-list-group">
+            <td class="list-item" *ngFor="let product of productList">
+              <h3>Titulo - {{ product.name }}</h3>
+              <br />
+              <p>Description - {{ product.description }}</p>
+              <br />
+              price R$ - {{ product.price }}
+              <!---------------- List ---------------->
 
-              <button class="pi pi-user-edit" style="font-size: 1rem"></button>
-              <button class="pi pi-times" style="font-size: 1rem"></button>
-            </div>
+              <!---------------- Modal Editar ---------------->
+              <div class="container-btn">
+                <button
+                  (click)="showDialog(product)"
+                  class="pi pi-user-edit"
+                  label="Show"
+                ></button>
+                <p-dialog
+                  header="Editar product"
+                  [(visible)]="visible"
+                  [modal]="true"
+                  [style]="{
+                    width: '40vw',
+                    height: '50vh',
+                  }"
+                >
+                  <div class="container-modal">
+                    <span class="p-float-label">
+                      <input
+                        [(ngModel)]="editName"
+                        name="name"
+                        type="text"
+                        pInputText
+                        id="name"
+                      />
+                      <label htmlFor="email">Name</label>
+                    </span>
+                    <span class="p-float-label">
+                      <textarea
+                        ngModel
+                        required
+                        [(ngModel)]="editDescription"
+                        name="description"
+                        type="text"
+                        pInputText
+                        id=" description"
+                      >
+                      </textarea>
+                      <label htmlFor="description">description</label>
+                    </span>
+                    <span class="p-float-label">
+                      <input
+                        ngModel
+                        required
+                        [(ngModel)]="editPrice"
+                        name="Price"
+                        type="number"
+                        pInputText
+                        id=" Price"
+                      />
+                      <label htmlFor="Price">Price</label>
+                    </span>
+                  </div>
+                  <ng-template pTemplate="footer">
+                    <button
+                      (click)="saveItem()"
+                      pButton
+                      icon="pi pi-check"
+                      label="Editar"
+                      styleClass="p-button-text"
+                    ></button>
+                    <button
+                      pButton
+                      icon="pi pi-check"
+                      (click)="closeDialog()"
+                      label="Voltar"
+                      styleClass="p-button-text"
+                    ></button>
+                  </ng-template>
+                </p-dialog>
+                <!---------------- Modal Editar ---------------->
 
-            <div class="flex flex-column align-items-end">
-              <h6 class="mb-2">Price{{ "$ " + product.price }}</h6>
-            </div>
+                <!---------------- Delete ---------------->
+                <button
+                  (click)="deleteItem(product.id)"
+                  class="pi pi-file-excel"
+                ></button>
+                <!---------------- Delete ---------------->
+              </div>
+            </td>
           </div>
-        </ng-template>
-      </p-orderList>
+        </tr>
+      </div>
     </div>
   </div>
 </div>

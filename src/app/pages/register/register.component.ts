@@ -42,7 +42,9 @@ export class RegisterComponent {
       .catch((error) => {
         this.toast.error({
           detail: 'Error Register',
-          summary: error,
+          summary:
+            'Error when trying to register, please try again with other data' +
+            error,
           duration: 5000,
         });
         // Aqui você pode lidar com erros de registro e exibir mensagens de erro ao usuário
